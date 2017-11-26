@@ -1,13 +1,14 @@
 import { Injectable, Inject, transition } from '@angular/core';
 import {Http,Headers,RequestOptions,Response} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
+import { debug } from 'util';
 
 @Injectable()
 export class AccountService {
   private loggedIn = false;
   constructor(@Inject("apiUrl") private apiUrl, private http:Http) { }
 
-  login(username:string,password:string):Observable<boolean>{
+  login(username,password):Observable<boolean>{
     let url:string= this.apiUrl+"/account/login";
     let headers= new Headers();
     headers.append("Authorization",btoa(username+":"+password));

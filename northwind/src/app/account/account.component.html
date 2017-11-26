@@ -1,3 +1,4 @@
+<h4 class="page-header">Account</h4>
 <div class="container">
   <div id="loginBox" class="col-md-7">
     <div class="panel panel-default">
@@ -10,19 +11,18 @@
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-user"></i>
             </span>
-            <input type="text" class="form-control" name="user" ngModal placeholder="User Name">
+            <input type="text" class="form-control" name="user" ngModel placeholder="User Name">
           </div>
           <div class="input-group">
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-lock"></i>
             </span>
-            <input type="password" class="form-control" name="password" ngModal placeholder="Password">
+            <input type="password" class="form-control" name="password" ngModel placeholder="Password">
           </div>
-          <div class="form-control">
-            <div class="controls">
-              <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i>Login</button>
-            </div>
-          </div>
+
+          <button type="submit" class="btn btn-primary pull-right">
+            <i class="glyphicon glyphicon-log-in"></i> Login</button>
+
         </form>
       </div>
     </div>
