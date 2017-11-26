@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Routes, RouterModule } from '@angular/router'
 
 import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
 
@@ -19,6 +20,21 @@ import { CartService } from './cart/cart.service';
 import { VatAddedPipe } from './product/vat-added.pipe';
 import { ProductFilterPipe } from './product/product-filter.pipe';
 
+const appRoute:Routes=[
+  {
+    path: "",
+    redirectTo:"products",
+    pathMatch:"full",
+  },
+  {
+    path: "products",
+    component:ProductComponent
+  },
+  {
+    path:"products/:seoUrl",
+    component:ProductComponent
+  }
+]
 
 
 @NgModule({
@@ -40,6 +56,7 @@ import { ProductFilterPipe } from './product/product-filter.pipe';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoute),
     SimpleNotificationsModule.forRoot()
   ],
   providers: [

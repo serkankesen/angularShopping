@@ -1,4 +1,4 @@
 <h4 class="page-header">Categories</h4>
 <div class="list-group">
-  <a class="list-group-item" *ngFor="let category of categories">{{category.categoryName}}</a>
+  <a class="list-group-item" routerLinkActive="active" *ngFor="let category of categories" routerLink="products/{{category.seoUrl}}">{{category.categoryName}}</a>
 </div>
