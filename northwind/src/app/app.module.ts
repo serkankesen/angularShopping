@@ -16,6 +16,8 @@ import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component
 import { LoggedComponent } from './account/logged/logged.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CartService } from './cart/cart.service';
+import { VatAddedPipe } from './product/vat-added.pipe';
+import { ProductFilterPipe } from './product/product-filter.pipe';
 
 
 
@@ -29,7 +31,9 @@ import { CartService } from './cart/cart.service';
     ShippingComponent,
     CartSummaryComponent,
     LoggedComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    VatAddedPipe,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,
