@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, transition } from '@angular/core';
 import {Http,Headers,RequestOptions,Response} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
 
@@ -19,6 +19,15 @@ export class AccountService {
       }
       return res;
     });
+  }
+
+  logOut(){
+    localStorage.removeItem("isLogged");
+    this.loggedIn=false;
+  }
+
+  isLoggedIn(){
+    return this.loggedIn;
   }
 
 }
