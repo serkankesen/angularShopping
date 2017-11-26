@@ -1,5 +1,5 @@
 <h4 class="page-header">Shipping Details</h4>
-<form #shippingFrom="ngForm" (ngSubmit)="checkOut(shippingForm)">
+<form #shippingForm="ngForm" (ngSubmit)="checkOut(shippingForm)">
   <div class="form-group" [class.has-error]="fullName.invalid && fullName.dirty">
     <label class="control-label" for="fullName">Full Name</label>
     <input #fullName="ngModel" type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="model.fullName" required>
@@ -24,5 +24,5 @@
       <input type="checkbox" name="isGift" [(ngModel)]="model.isGift">Is Gift?
     </label>
   </div>
-  <button type="submit" class="btn btn-xs btn-primary" [disabled]="shippingFrom.invalid">Complete Shopping</button>
+  <button type="submit" class="btn btn-xs btn-primary" [disabled]="shippingForm.invalid">Complete Shopping</button>
 </form>
