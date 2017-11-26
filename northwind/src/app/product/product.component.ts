@@ -5,6 +5,7 @@ import { ProductService } from "./product.service";
 import { NotificationsService } from "angular2-notifications";
 import { CartService } from "../cart/cart.service";
 import { ActivatedRoute } from "@angular/router";
+import { Pager } from "../app-pager";
 
 @Component({
   selector: "app-product",
@@ -15,6 +16,7 @@ import { ActivatedRoute } from "@angular/router";
 export class ProductComponent implements OnInit {
   products: Product[];
   addedProduct: string;
+  pager: Pager = new Pager();
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
@@ -33,6 +35,7 @@ export class ProductComponent implements OnInit {
   getProducts(seoCategory: string) {
     this.productService.getProducts(seoCategory).subscribe(p => {
       this.products = p;
+      this.pager = this.getPager(p.length);
     });
   }
 
@@ -44,5 +47,27 @@ export class ProductComponent implements OnInit {
       product.productName,
       " added to cart!"
     );
+  }
+
+  getPager(
+    totalItems: number,
+    currentPage: number = 1,
+    pageSize: number = 6
+  ): Pager {
+    let totalPages = Math.ceil(totalItems / pageSize);
+
+    let pages: Array<number> = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+    var pager = new Pager();
+    pager.currentPage = currentPage;
+    pager.pageList = pages;
+    pager.pageSize = pageSize;
+    return pager;
+  }
+
+  setPage(page: number) {
+    this.pager.currentPage = page;
   }
 }
