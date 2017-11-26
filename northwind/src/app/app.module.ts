@@ -1,45 +1,51 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router'
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { Routes, RouterModule } from "@angular/router";
 
-import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
+import {
+  SimpleNotificationsModule,
+  NotificationsService
+} from "angular2-notifications";
 
-import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { CategoryComponent } from './category/category.component';
-import { CartComponent } from './cart/cart.component';
-import { AccountComponent } from './account/account.component';
-import { ShippingComponent } from './shipping/shipping.component';
-import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
-import { LoggedComponent } from './account/logged/logged.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { CartService } from './cart/cart.service';
-import { VatAddedPipe } from './product/vat-added.pipe';
-import { ProductFilterPipe } from './product/product-filter.pipe';
+import { AppComponent } from "./app.component";
+import { ProductComponent } from "./product/product.component";
+import { CategoryComponent } from "./category/category.component";
+import { CartComponent } from "./cart/cart.component";
+import { AccountComponent } from "./account/account.component";
+import { ShippingComponent } from "./shipping/shipping.component";
+import { CartSummaryComponent } from "./cart/cart-summary/cart-summary.component";
+import { LoggedComponent } from "./account/logged/logged.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { CartService } from "./cart/cart.service";
+import { VatAddedPipe } from "./product/vat-added.pipe";
+import { ProductFilterPipe } from "./product/product-filter.pipe";
 
-const appRoute:Routes=[
+const appRoute: Routes = [
   {
     path: "",
-    redirectTo:"products",
-    pathMatch:"full",
+    redirectTo: "products",
+    pathMatch: "full"
   },
   {
     path: "products",
-    component:ProductComponent
+    component: ProductComponent
   },
   {
-    path:"products/:seoUrl",
-    component:ProductComponent
+    path: "products/:seoUrl",
+    component: ProductComponent
   },
   {
-    path:"my-cart",
-    component:CartComponent
+    path: "my-cart",
+    component: CartComponent
   },
-]
-
+  {
+    path: "shipping",
+    component: ShippingComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -64,10 +70,13 @@ const appRoute:Routes=[
     SimpleNotificationsModule.forRoot()
   ],
   providers: [
-    {provide:"apiUrl",useValue:"http://northwindapi.azurewebsites.net/api/"},
+    {
+      provide: "apiUrl",
+      useValue: "http://northwindapi.azurewebsites.net/api/"
+    },
     NotificationsService,
     CartService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
