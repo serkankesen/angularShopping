@@ -25,6 +25,7 @@ import { ProductFilterPipe } from "./product/product-filter.pipe";
 import { AccountService } from "./account/account.service";
 import { CartService } from "./cart/cart.service";
 import { LoginGuard } from "./account/login.guard";
+import { PendingChangesGuard } from "./guards/pending-changes.guard";
 
 const appRoute: Routes = [
   {
@@ -46,7 +47,9 @@ const appRoute: Routes = [
   },
   {
     path: "shipping",
-    component: ShippingComponent,canActivate:[LoginGuard]
+    component: ShippingComponent,
+    canActivate: [LoginGuard],
+    canDeactivate:[PendingChangesGuard]
   },
   {
     path: "account",
@@ -84,7 +87,8 @@ const appRoute: Routes = [
     NotificationsService,
     CartService,
     AccountService,
-    LoginGuard
+    LoginGuard,
+    PendingChangesGuard
   ],
   bootstrap: [AppComponent]
 })

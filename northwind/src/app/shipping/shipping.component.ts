@@ -4,20 +4,23 @@ import { Shipping } from "./shipping";
 import { NotificationsService } from "angular2-notifications";
 import { CartService } from "../cart/cart.service";
 import { Router } from "@angular/router";
+import { ComponentCanDeactivate } from "../guards/pending-changes.guard";
 
 @Component({
   selector: "app-shipping",
   templateUrl: "./shipping.component.html",
   styleUrls: ["./shipping.component.css"]
 })
-export class ShippingComponent implements OnInit {
+export class ShippingComponent implements OnInit, ComponentCanDeactivate {
   constructor(
     private cartService: CartService,
     private notificationService: NotificationsService,
     private router: Router
   ) {}
+
   cities = [];
   model: Shipping = new Shipping("", "", true, -1);
+  isDirty: boolean = false;
   ngOnInit() {
     this.cities.push(
       {
@@ -32,12 +35,16 @@ export class ShippingComponent implements OnInit {
     );
   }
 
-  checkOut(form:NgForm) {
+  checkOut(form: NgForm) {
     if (form.invalid) {
       return;
     }
     this.cartService.clear();
     this.notificationService.info("Successfull", "Shopping completed!");
     this.router.navigate(["products"]);
+  }
+
+  canDeactivate(): boolean {
+    return !this.isDirty;
   }
 }
