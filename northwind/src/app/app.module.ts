@@ -24,6 +24,7 @@ import { ProductFilterPipe } from "./product/product-filter.pipe";
 
 import { AccountService } from "./account/account.service";
 import { CartService } from "./cart/cart.service";
+import { LoginGuard } from "./account/login.guard";
 
 const appRoute: Routes = [
   {
@@ -45,7 +46,7 @@ const appRoute: Routes = [
   },
   {
     path: "shipping",
-    component: ShippingComponent
+    component: ShippingComponent,canActivate:[LoginGuard]
   },
   {
     path: "account",
@@ -82,7 +83,8 @@ const appRoute: Routes = [
     },
     NotificationsService,
     CartService,
-    AccountService
+    AccountService,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

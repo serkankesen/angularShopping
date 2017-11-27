@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   templateUrl: "./account.component.html",
   styleUrls: ["./account.component.css"]
 })
+
 export class AccountComponent implements OnInit {
   returnUrl:string;
   message:string;
